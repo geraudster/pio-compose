@@ -1,0 +1,19 @@
+* Docker-compose file for PredictionIO
+
+This is a compose file for [[http://predictionio.incubator.apache.org][PredictionIO]], an Apache incubator project.
+This configuration uses [[https://www.elastic.co/webinars/getting-started-elasticsearch?elektra%3Dhome&storm%3Dsub1][Elasticsearch]] as storage layer.
+
+** Usage
+
+#+BEGIN_SRC
+git clone https://github.com/geraudster/pio-compose.git
+cd pio-compose/pio-container
+build.sh
+cd .. # back to pio-compose
+docker-compose up elasticsearch
+docker-compose up pio
+#+END_SRC
+
+** Configure new engine
+
+*TODO*
