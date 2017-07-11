@@ -17,3 +17,7 @@ docker-compose up pio
 ** Configure new engine
 
 *TODO*
+
+#+BEGIN_SRC
+docker-compose run -v "$PWD/MyRecommendation:/test" -v "$PWD/.sbt:/root/.sbt" -v "$PWD/.ivy2:/root/.ivy2" -w /test pio build --clean --verbose
+#+END_SRC

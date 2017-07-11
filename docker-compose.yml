@@ -9,6 +9,7 @@ services:
 
    pio:
      build: pio-container
+     command: [ "eventserver" ]
      depends_on:
        - elasticsearch
      volumes:

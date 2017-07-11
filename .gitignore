@@ -1,3 +1,6 @@
+.ivy2/
+.sbt/
+MyRecommendation/
 *~
 *.tar.gz
 tmp/
