@@ -1,7 +1,7 @@
 * Docker-compose file for PredictionIO
 
 This is a compose file for [[http://predictionio.incubator.apache.org][PredictionIO]], an Apache incubator project.
-This configuration uses [[https://www.elastic.co/webinars/getting-started-elasticsearch?elektra%3Dhome&storm%3Dsub1][Elasticsearch]] as storage layer.
+This configuration uses [[https://www.elastic.co/webinars/getting-started-elasticsearch][Elasticsearch]] as storage layer.
 
 ** Usage
 
