@@ -1,23 +1,38 @@
-version: '2'
+version: '2.1'
 services:
    elasticsearch:
      image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
      environment:
-       - "xpack.security.enabled=false"
+       - xpack.security.enabled=false
+     volumes:
+       - esdata:/usr/share/elasticsearch/data
      ports:
        - "9200:9200"
 
    pio:
      build: pio-container
      command: [ "eventserver" ]
-     depends_on:
-       - elasticsearch
      volumes:
        - $PWD/pio-container/conf/pio-env.sh:/pio/PredictionIO-0.11.0-incubating/conf/pio-env.sh
        - $PWD/spark:/pio/spark
      environment:
-       - "SPARK_HOME=/pio/spark"
-       
+       - SPARK_HOME=/pio/spark
      ports:
        - "7070:7070"
          
+   pio-builder:
+     build: pio-container
+     volumes:
+       - $PWD/pio-container/conf/pio-env.sh:/pio/PredictionIO-0.11.0-incubating/conf/pio-env.sh
+       - $PWD/spark:/pio/spark
+       - cache:/root/.sbt
+       - cache:/root/.ivy2
+       - ${ENGINE_SRC:-cache}:/test
+     environment:
+       - SPARK_HOME=/pio/spark
+     working_dir: /test
+     command: [ "app", "list" ]
+
+volumes:
+   cache:
+   esdata:

@@ -18,6 +18,19 @@ docker-compose up pio
 
 *TODO*
 
+Add new app:
 #+BEGIN_SRC
-docker-compose run -v "$PWD/MyRecommendation:/test" -v "$PWD/.sbt:/root/.sbt" -v "$PWD/.ivy2:/root/.ivy2" -w /test pio build --clean --verbose
+docker-compose run pio-builder app new MyApp1
+export ACCESS_KEY=<key given by the preceding command>
 #+END_SRC
+
+Build: (add scalaVersion := "2.11.8" in your build.sbt)
+#+BEGIN_SRC
+ENGINE_SRC="$PWD/MyRecommendation" docker-compose run pio-builder build --clean --verbose
+#+END_SRC
+
+Train:
+#+BEGIN_SRC
+ENGINE_SRC="$PWD/MyRecommendation" docker-compose run pio-builder train
+#+END_SRC
+
